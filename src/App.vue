@@ -29,15 +29,13 @@ const addContact = () => {
     selectedGender.value = "";
     selectType.value = "";
   }
-function setGender(gender) {
-    selectedGender = gender;
-    document.getElementById("maleButton");
-    document.getElementById("femaleButton");
+//setGenderFunction
+const setGender = (gender) => {
+    selectedGender.value = gender
 }
-function setType(type){
-    selectType = type;
-    document.getElementById("personalButton");
-    document.getElementById("workButton");
+//set contact type
+const setType = (type) => {
+    selectType.value = type
 }
 </script>
 
