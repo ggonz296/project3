@@ -72,15 +72,14 @@ button:focus-visible {
 }
 ul{
   list-style-type: style none;
-  padding: 0;
 }
 
 .content{
-  height: 100vh;
+  min-height: 100vh;
   background: lightgray;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -123,4 +122,9 @@ h3{
 
 body{
   background: darkred;
+  margin: 0;
+  display: block;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
 }
