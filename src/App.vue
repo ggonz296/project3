@@ -7,25 +7,21 @@ const selectedGender = ref("");
 const selectType = ref("");
 const contacts = ref([]);
 
-//Generate Contact function
+//Add Contact function
 const addContact = () => {
-
     //validate inputs
-    if (name === "" || phone === "" || selectType === ""|| selectedGender === "") {
+    if (name.value.trim() === "" || phone.value.trim() === "" || selectType.value.trim() === ""|| selectedGender.value.trim() === "") {
         alert("Please enter name, phone number, contact type, and gender. Please click on the buttons.");
         return
     }
 
-    //create a new list of contacts
+    //adds the contact to the list
     contacts.value.push({
       name: name.value,
       phone: phone.value,
       type: selectType.value,
       gender: selectedGender.value,
     });
-
-    //starts adding contacts to the list
-    document.getElementById("contactList").appendChild(li);
 
     //clear inputs
     name.value = "";
