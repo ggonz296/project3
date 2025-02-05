@@ -41,7 +41,6 @@ const setType = (type) => {
 
 <template>
   <div class="content">
-        
         <div>
         <h1 class="main-title">Generate a List of Contacts</h1>
         <h2>By Gabriel Gonzalez</h2>
@@ -51,28 +50,31 @@ const setType = (type) => {
 
         <div class="contactInput">
             <label for="name">Name:</label>
-            <input type="text" id="name" placeholder="Pleae enter a name">
+            <input type="text" id="name" v-model="name" placeholder="Pleae enter a name"/>
             <label for="phone">Phone:</label>
-            <input type="tel" id="phone" placeholder="Please enter phonenumber">
-            <button onclick="addContact()">Add Contact</button>
+            <input type="tel" id="phone" v-model="phone" placeholder="Please enter phonenumber">
+            <button @click="addContact()">Add Contact</button>
         </div>
 
         <div class="Contact-Type">
-            <h3>Personal or Work Contact</h3>
-            <button onclick="setType('Personal')" id="personalButton">Personal</button>
-            <button onclick="setType('Work')" id="workButton">Work</button>
+            <h3>Is This Their Personal or Work Contact</h3>
+            <button @click="setType('Personal')" :class="{active: selectType === 'Personal' }"> Personal </button>
+            <button @click="setType('Work')" :class="{active: selectType === 'Work' }">Work</button>
         </div>
 
         <div class = "Male-Female">
             <h3>Please Select Contact Gender</h3>
-            <button onclick="setGender('Male')" id="maleButton">Male</button>
-            <button onclick="setGender('Female')" id="femaleButton">Female</button>
+            <button @click="setGender('Male')" :class="{active: selectType === 'Male' }">Male</button>
+            <button @click="setGender('Female')" :class="{active: selectType === 'Female' }">Female</button>
         </div>
 
         <div class="ContactList">
             <div id="pending">
             <h2>Contact List</h2>
             <ul id="contactList">
+              <li v-for="(contact, x) in contacts" :key="x">
+                {{ `Name: ${contact.name} - Phone: ${contact.phone} - Contact Type: ${contact.type} - Gender: ${contact.gender}` }}
+              </li>
             </ul>
             </div>
         </div>
