@@ -1,33 +1,38 @@
 <script setup>
+import { ref } from "vue";
 //Global variables
-let selectedGender = "";
-let selectType ="";
+const name = ref("");
+const phone = ref("");
+const selectedGender = ref("");
+const selectType = ref("");
+const contacts = ref([]);
 
 //Generate Contact function
-function addContact() {
-    let name = document.getElementById("name").value;
-    let phone = document.getElementById("phone").value;
+const addContact = () => {
 
     //validate inputs
     if (name === "" || phone === "" || selectType === ""|| selectedGender === "") {
         alert("Please enter name, phone number, contact type, and gender. Please click on the buttons.");
-        return;
+        return
     }
 
     //create a new list of contacts
-    let li = document.createElement("li");
-    li.textContent = `${"Name: " + name} - ${"Phone: " + phone} - ${"Contact Type: " + selectType} - 
-    (${"Gender: " + selectedGender})`;
+    contacts.value.push({
+      name: name.value,
+      phone: phone.value,
+      type: selectType.value,
+      gender: selectedGender.value,
+    });
 
     //starts adding contacts to the list
     document.getElementById("contactList").appendChild(li);
 
     //clear inputs
-    selectedGender = "";
-    selectType ="";
-    document.getElementById("name").value = "";
-    document.getElementById("phone").value = "";
-}
+    name.value = "";
+    phone.value = "";
+    selectedGender.value = "";
+    selectType.value = "";
+  }
 function setGender(gender) {
     selectedGender = gender;
     document.getElementById("maleButton");
