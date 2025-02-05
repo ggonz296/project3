@@ -37,6 +37,10 @@ const setGender = (gender) => {
 const setType = (type) => {
     selectType.value = type
 }
+//Delete a contact
+const removeContact = (x) =>{
+    contacts.value = contacts.value.filter(e => e !== x)
+  }
 </script>
 
 <template>
@@ -72,8 +76,11 @@ const setType = (type) => {
             <div id="pending">
             <h2>Contact List</h2>
             <ul id="contactList">
-              <li v-for="(contact, x) in contacts" :key="x">
-                {{ `Name: ${contact.name} - Phone: ${contact.phone} - Contact Type: ${contact.type} - Gender: ${contact.gender}` }}
+              <li v-for="x in contacts" :key="x">
+                {{ `Name: ${x.name} - Phone: ${x.phone} - Contact Type: ${x.type} - Gender: ${x.gender}` }}
+                <div class="actions">
+                  <button class="delete" @click="removeContact(x)">Delete</button>
+                </div>
               </li>
             </ul>
             </div>
